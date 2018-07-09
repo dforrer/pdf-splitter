@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function display_usage()
 {
@@ -84,7 +84,7 @@ do
   barcodes="$(zbarimg --raw -q currentPage.jpeg)"
   echo $barcodes
 
-  # match the regular expression against the barcode
+  # match the regular expression against the barcodes-string
 
   if [[ $barcodes =~ $regex ]]
   then
@@ -96,7 +96,7 @@ do
     fromPage=$currentPage
 
   else
-    echo "Regex NOT found"
+    echo "No regex match found"
   fi
 
   if [[ $totalpages -eq $currentPage ]]
