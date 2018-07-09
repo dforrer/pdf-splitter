@@ -32,7 +32,7 @@ function pdfpextr()
     #     $2 is the last page of the range to extract
     #     $3 is the input file
     #     output file will be named "inputfile_pXX-pYY.pdf"
-    gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER\
+    gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
        -dFirstPage=${1} \
        -dLastPage=${2} \
        -sOutputFile=${3%.pdf}_p${1}-p${2}.pdf \
@@ -71,13 +71,12 @@ do
   
   # use Ghostscript to extract the current page of the PDF-file to a single JPEG-file
 
-  gs        				\
-    -o $tempdir/currentPage.jpeg	\
-    -sDEVICE=jpeg                	\
-    -dNOPAUSE -r300x300			\
-    -dFirstPage=$currentPage		\
-    -dLastPage=$currentPage		\
-    $inputfile
+  gs -o $tempdir/currentPage.jpeg \
+     -sDEVICE=jpeg \
+     -dNOPAUSE -r300x300 \
+     -dFirstPage=$currentPage \
+     -dLastPage=$currentPage \
+     $inputfile
 
   # extract ALL the barcodes from currentPage.jpeg
   # because the first extracted barcode might not be the one we are looking for
