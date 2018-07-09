@@ -20,7 +20,7 @@ function display_usage()
      echo '#            The 2. argument is the regular expression.                       #'
      echo '# Example:   bash pdf-splitter.sh ~/input/merged2.pdf 20[1-3][0-9]000[0-9]{6} #'
      echo '#                                                                             #'
-     echo '#                                                                             #'
+     echo '# Tested on: Linux Mint 18.3 Sylvia, macos 10.13.5                            #'
      echo '###############################################################################'
 }
 
@@ -52,7 +52,7 @@ regex=$2
 
 # Create temporary directory and make sure it gets deleted on EXIT
 
-tempdir=$(/bin/mktemp -d "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
+tempdir=$(mktemp -d "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
 cd $tempdir
 trap "rm -rf $tempdir" EXIT
 
