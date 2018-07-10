@@ -32,11 +32,8 @@ function pdfpextr()
     #     $2 is the last page of the range to extract
     #     $3 is the input file
     #     output file will be named "inputfile_pXX-pYY.pdf"
-    gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-       -dFirstPage=${1} \
-       -dLastPage=${2} \
-       -sOutputFile=${3%.pdf}_p${1}-p${2}.pdf \
-       ${3}
+    exportcommand=$(echo "pdftk ${3} cat ${1}-${2} output ${3%.pdf}_p${1}-p${2}.pdf")
+    eval "$exportcommand"
 }
 
 # Make sure we have two parameters, then save them
